@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotación de Páginas en Iframe</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="contentFrame" src="" frameborder="0"></iframe>
+
+    <script>
+        // Array de URLs que se rotarán
+        const urls = [
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/aU7VE',
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_ynvykmz9md'
+
+        ];
+        let currentIndex = 0;
+        const intervalTime = 10000; // Intervalo de tiempo en milisegundos (5 segundos en este caso)
+
+        function loadNextPage() {
+            const iframe = document.getElementById('contentFrame');
+            iframe.src = urls[currentIndex];
+            currentIndex = (currentIndex + 1) % urls.length; // Mover al siguiente URL, ciclo al inicio si es necesario
+        }
+
+        // Cargar la primera página inmediatamente
+        loadNextPage();
+        // Configurar el intervalo para cambiar la página
+        setInterval(loadNextPage, intervalTime);
+    </script>
+</body>
+</html>
