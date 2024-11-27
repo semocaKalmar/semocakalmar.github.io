@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen Ajustada al Espacio</title>
+    <style>
+        /* El contenedor y la imagen se ajustan al tamaño de la ventana */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Evita barras de desplazamiento */
+        }
+
+        img {
+            width: 100%;      /* La imagen ocupa todo el ancho de la ventana */
+            height: 100vh;    /* La imagen ocupa toda la altura de la ventana */
+            object-fit: contain; /* Ajusta la imagen dentro del área sin recortar */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Imagen que ocupa todo el alto y ancho de la ventana -->
+<img src="imagenes/04_RTG058/GANTT.png" alt="Imagen ajustada sin recortes">
+
+</body>
+</html>
+
+  
