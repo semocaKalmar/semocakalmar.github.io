@@ -36,7 +36,7 @@
 </head>
 <body>
     <button id="fullscreenButton">Pantalla Completa</button>
-
+    <div id="currentIndexDisplay">Índice actual: 0</div>
     <iframe id="contentFrame" src="" frameborder="0"></iframe>
 
     <script>
@@ -57,41 +57,66 @@
     <script>
         // Array de URLs que se rotarán
         const urls = [
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/aU7VE', //Resumen
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_ynvykmz9md', //Batería condensadores
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_k0s6pz1bnd', //Colectores
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_98y3921bnd', //Reset
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_pazq471bnd', //Guardamotores
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_bp78681bnd', //Pestillo
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_xbg74w2bnd', //Antibalanceo
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_8n7pey2bnd', //Alimentación PLC
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_xxdphy2bnd', //Desplazamiento Spreader*/
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_4azuhpmhnd', //Antirretorno
-            'portada_geminis.html',
-            '01_RTG051_GANTT.html',
-            '01_RTG051_fotos.html',
-            '02_RTG075_GANTT.html',
-            '03_RTG049_GANTT.html',
-            '04_RTG058_GANTT.html',
-            '05_RTG066_GANTT.html',
-            '06_RTG062_GANTT.html',
-            '07_RTG060_GANTT.html',
-            '08_RTG057_GANTT.html'
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/aU7VE', //Resumen 0
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_ynvykmz9md', //Batería condensadores 1
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_k0s6pz1bnd', //Colectores 2
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_98y3921bnd', //Reset 3
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_pazq471bnd', //Guardamotores 4
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_bp78681bnd', //Pestillo 5
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_xbg74w2bnd', //Antibalanceo 6
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_8n7pey2bnd', //Alimentación PLC 7
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_xxdphy2bnd', //Desplazamiento Spreader*/ 8
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_4azuhpmhnd', //Antirretorno 9
+            'portada_geminis.html', // 10
+            '01_RTG051_GANTT.html', // 11
+            '01_RTG051_fotos.html', // 12
+            '02_RTG075_GANTT.html', // 13
+            '03_RTG049_GANTT.html', // 14
+            '04_RTG058_GANTT.html', // 15
+            '05_RTG066_GANTT.html', // 16
+            '06_RTG062_GANTT.html', // 17
+            '07_RTG060_GANTT.html', // 18
+            '08_RTG057_GANTT.html' // 19
 
         ];
         let currentIndex = 0;
-        const intervalTime = 10000; // Intervalo de tiempo en milisegundos (5 segundos en este caso)
+
+        //const intervalTime = 10000; // Intervalo de tiempo en milisegundos (10 segundos en este caso)
+    
+        const intervalTimeSg = [
+            5, //0-1
+            5, //1-2
+            15, //2-3
+            5, //3-4
+            5, //4-5
+            5, //5-6
+            5, //7-8
+            5, //9-10
+            5, //11-12
+            5, //12-13
+            5, //13-14
+            5, //14-15
+            5, //15-16
+            5, //16-17
+            5, //17-18
+            5, //18-19
+            5, //19-20
+        ];
 
         function loadNextPage() {
             const iframe = document.getElementById('contentFrame');
+            const currentIndexDisplay = document.getElementById('currentIndexDisplay');
             iframe.src = urls[currentIndex];
+            const nextInterval = intervalTimeSg[currentIndex]*1000;  // Obtener el intervalo para la siguiente URL
+            currentIndexDisplay.innerText = `Índice actual: ${currentIndex} y nextInterval: ${nextInterval}`;
             currentIndex = (currentIndex + 1) % urls.length; // Mover al siguiente URL, ciclo al inicio si es necesario
+            setTimeout(loadNextPage, nextInterval);
         }
 
         // Cargar la primera página inmediatamente
         loadNextPage();
-        // Configurar el intervalo para cambiar la página
-        setInterval(loadNextPage, intervalTime);
+        
+        
     </script>
 </body>
 </html>
