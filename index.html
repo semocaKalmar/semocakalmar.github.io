@@ -57,26 +57,28 @@
     <script>
         // Array de URLs que se rotarán
         const urls = [
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/aU7VE', //Resumen 0
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_ynvykmz9md', //Batería condensadores 1
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_k0s6pz1bnd', //Colectores 2
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_98y3921bnd', //Reset 3
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_pazq471bnd', //Guardamotores 4
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_bp78681bnd', //Pestillo 5
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_xbg74w2bnd', //Antibalanceo 6
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_8n7pey2bnd', //Alimentación PLC 7
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_xxdphy2bnd', //Desplazamiento Spreader*/ 8
-            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_4azuhpmhnd', //Antirretorno 9
-            'portada_geminis.html', // 10
-            '01_RTG051_GANTT.html', // 11
-            '01_RTG051_fotos.html', // 12
-            '02_RTG075_GANTT.html', // 13
-            '03_RTG049_GANTT.html', // 14
-            '04_RTG058_GANTT.html', // 15
-            '05_RTG066_GANTT.html', // 16
-            '06_RTG062_GANTT.html', // 17
-            '07_RTG060_GANTT.html', // 18
-            '08_RTG057_GANTT.html' // 19
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/aU7VE', //Portada1 0
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_jp97aa5xnd', //Portada2 1
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_ynvykmz9md', //Batería condensadores 2
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_k0s6pz1bnd', //Colectores 3
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_98y3921bnd', //Reset 4
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_pazq471bnd', //Guardamotores 5
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_bp78681bnd', //Pestillo 6
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_xbg74w2bnd', //Antibalanceo 7
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_8n7pey2bnd', //Alimentación PLC 8
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_xxdphy2bnd', //Desplazamiento Spreader*/ 9
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_4azuhpmhnd', //Antirretorno 10
+            'https://lookerstudio.google.com/embed/reporting/1342230c-c041-4795-b6b0-617262f621d1/page/p_31qxiy4xnd', //Filtor partículas 11
+            'portada_geminis.html', // 12
+            '01_RTG051_GANTT.html', // 13
+            '01_RTG051_fotos.html', // 14
+            '02_RTG075_GANTT.html', // 15
+            '03_RTG049_GANTT.html', // 16
+            '04_RTG058_GANTT.html', // 17
+            '05_RTG066_GANTT.html', // 18
+            '06_RTG062_GANTT.html', // 19
+            '07_RTG060_GANTT.html', // 20
+            '08_RTG057_GANTT.html' // 21
 
         ];
         let currentIndex = 0;
@@ -85,7 +87,7 @@
     
         const intervalTimeSg = [
             15, //0-1
-            10, //1-2
+            15, //1-2
             10, //2-3
             10, //3-4
             10, //4-5
@@ -94,8 +96,8 @@
             10, //7-8
             10, //8-9
             10, //9-10
-            0, //10-11
-            0, //11-12
+            10, //10-11
+            10, //11-12
             0, //12-13
             0, //13-14
             0, //14-15
@@ -103,6 +105,8 @@
             0, //16-17
             0, //17-18
             0, //18-19
+            0, //19-20
+            0 //20-21
         ];
 
         function loadNextPage() {
